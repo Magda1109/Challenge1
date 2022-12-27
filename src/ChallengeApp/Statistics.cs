@@ -6,56 +6,39 @@ namespace ChallengeApp
     {
         public double High;
         public double Low;
-        public double Sum;
-        public int Count;
+        private double _sum;
+        private int _count;
 
         public Statistics()
         {
-            Count = 0;
-            Sum = 0.0;
+            _count = 0;
+            _sum = 0.0;
             High = double.MinValue;
             Low = double.MaxValue;
         }
 
-        public double Average
-        {
-            get
-            {
-                return Sum / Count;
-            }
-        }
+        public double Average => _sum / _count;
 
         public char Letter
         {
             get
             {
-                switch (Average)
+                return Average switch
                 {
-                    case >= 90:
-                        return 'A';
-
-                    case >= 80:
-                        return 'B';
-
-                    case >= 70:
-                        return 'C';
-
-                    case >= 60:
-                        return 'D';
-
-                    case >= 50:
-                        return 'E';
-
-                    default:
-                        return 'F';
-                }
+                    >= 90 => 'A',
+                    >= 80 => 'B',
+                    >= 70 => 'C',
+                    >= 60 => 'D',
+                    >= 50 => 'E',
+                    _ => 'F'
+                };
             }
         }
 
         public void Add(double number)
         {
-            Sum += number;
-            Count += 1;
+            _sum += number;
+            _count += 1;
             Low = Math.Min(number, Low);
             High = Math.Max(number, High);
         }

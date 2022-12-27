@@ -1,10 +1,8 @@
-using System;
-
 namespace ChallengeApp
 {
     public class NamedObject
     {
-        public NamedObject(string name)
+        protected NamedObject(string name)
         {
             this.Name = name;
         }

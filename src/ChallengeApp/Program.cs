@@ -8,7 +8,7 @@ namespace ChallengeApp
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
             var studentInMemory = new InMemoryStudent("Magda");
             var studentSaved = new SavedStudent("Magda");
@@ -19,17 +19,17 @@ namespace ChallengeApp
             Console.WriteLine("Hello! Please type 'memory' if you would like to save statistics in computer's memory or 'file' in case it should be saved in a file.");
             var userInput = Console.ReadLine();
 
-            if (userInput == "memory")
+            switch (userInput)
             {
-                EnterGrade(studentInMemory);
-            }
-            else if (userInput == "file")
-            {
-                EnterGrade(studentSaved);
-            }
-            else
-            {
-                Console.WriteLine("Incorrect input");
+                case "memory":
+                    EnterGrade(studentInMemory);
+                    break;
+                case "file":
+                    EnterGrade(studentSaved);
+                    break;
+                default:
+                    Console.WriteLine("Incorrect input");
+                    break;
             }
         }
 
@@ -44,7 +44,7 @@ namespace ChallengeApp
                 {
                     break;
                 }
-                else if (input == "s")
+                if (input == "s")
                 {
                     PrintStatistics(student);
                     break;

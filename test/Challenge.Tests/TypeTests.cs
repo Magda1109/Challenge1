@@ -6,9 +6,9 @@ namespace Challenge.Tests
 {
     public class TypeTests
     {
-        public delegate string WriteMessage(string message);
+        private delegate string WriteMessage(string message);
 
-        int counter = 0;
+        int _counter = 0;
 
          [Fact]
         public void WriteMessageDelegateCanPointToMethod()
@@ -19,18 +19,18 @@ namespace Challenge.Tests
 
            var result = del("HELLO!");
 
-           Assert.Equal(3, counter);
+           Assert.Equal(3, _counter);
         }
 
-        string ReturnMessage(string message)
+        private string ReturnMessage(string message)
         {
-            counter++;
+            _counter++;
             return message;
         }
 
-        string ReturnMessage2(string message)
+        private string ReturnMessage2(string message)
         {
-            counter++;
+            _counter++;
             return message.ToUpper();
         }
 
